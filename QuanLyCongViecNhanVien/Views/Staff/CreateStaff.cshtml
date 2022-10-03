@@ -1,0 +1,72 @@
+﻿@model StaffModel
+@{
+    ViewData["Title"] = "Thêm nhân viên";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container dashboard-content">
+    <h1 style="text-align:center"> <i class="fa fa-pencil-alt"></i>&nbsp;Bước 2: Thêm nhân viên</h1>
+    <form href="/Staff/CreateStaff" method="POST" style="width:600px;margin:0 auto;">
+        <div hidden>
+            <label>ID nhân viên</label>
+            <input name="IDStaff" value="0" type="text" />
+        </div>
+        <div hidden>
+            <label>ID tài khoản</label>
+            <input name="IDAccount" value="0" type="text" />
+        </div>
+        <div class="form-group">
+            <label class="font-weight-bold" asp-for="Staff_Name"></label>
+            <input asp-for="Staff_Name" class="form-control" />
+            <span asp-validation-for="Staff_Name" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label class="font-weight-bold" asp-for="Birthday"></label>
+            <input type="date" asp-for="Birthday" class="form-control" />
+            @Html.ValidationMessageFor(model => model.Birthday, null, new { @class = "text-danger" })
+        </div>
+        <div class="form-group">
+            <label class="font-weight-bold" asp-for="ID_Card"></label>
+            <input asp-for="ID_Card" class="form-control" />
+            <span asp-validation-for="ID_Card" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label class="font-weight-bold" asp-for="Gender"></label>
+            <select class="form-control" asp-for="Gender">
+                <option value="Male">Nam</option>
+                <option value="Female">Nữ</option>
+            </select>
+            <span asp-validation-for="Gender" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label class="font-weight-bold" asp-for="EmailAddress"></label>
+            <input asp-for="EmailAddress" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label class="font-weight-bold" asp-for="PhoneNumber"></label>
+            <input asp-for="PhoneNumber" class="form-control" />
+        </div>
+        @*<div class="form-group">
+            <label class="font-weight-bold" asp-for="Status"></label>
+            <select class="form-control" asp-for="Status">
+                <option value="true">Hoạt động</option>
+                <option value="false">Không hoạt động</option>
+            </select>
+        </div>*@
+        <div class="form-group">
+            <label class="font-weight-bold" asp-for="Position_ID"></label>
+            <select class="form-control" asp-for="Position_ID">
+                <option value="1">Thư ký</option>
+                <option value="2">Quản lý</option>
+                <option value="3">Nhân viên</option>
+            </select>
+        </div>
+        <div class="text-right">
+            <input class="btn btn-primary mb-2" type="submit" value="Hoàn tất" />
+        </div>
+        <div class="text-right mb-5">
+            <a href="/Staff/DeleteAccount" class="btn btn-primary">Huỷ</a>
+        </div>
+    </form>
+    
+</div>

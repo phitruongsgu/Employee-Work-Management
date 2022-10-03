@@ -1,0 +1,181 @@
+﻿@model ModelView
+@{
+    ViewData["Title"] = "Quản lý công việc";
+}
+@{
+    var size = Model.Works.Count();
+}
+<div class="container-fluid dashboard-content">
+    <div class="row">
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+            <div class="page-header">
+                <h1 style="border:none;border-bottom:0.5px solid silver;padding-bottom:5px;" class="pageheader-title font-weight-bold"><i class="fa fa-list-alt"></i>&ensp;Danh sách công việc</h1>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-8 col-lg-8 col-sm-8 col-xl-8">
+            <form action="/Work/Index" method="post" onsubmit="return check()" class="form-group d-flex margin-bottom-20">
+                <input type="text" name="search" id="search" placeholder="Nhập tiêu đề công việc cần tìm"
+                       class="form-group rounded"
+                       style="outline:none;margin-right:1px;width:215px" />
+                <input type="submit" value="Tìm" class="form-group btn btn-primary rounded">
+                <script>
+                    function check() {
+                        if (document.getElementById("search").value == "") {
+                            alert("Vui lòng nhập từ khoá cần tìm kiếm!");
+                            return false;
+                        }
+                    }
+                </script>
+            </form>
+            <p class="mb-1 text-dark font-20 showAmount">Hiển thị công việc 1 đến 4 trong tổng số @Model.Works.Count() công việc</p>
+        </div>
+        <div class="col-md-4 col-xl-4 col-sm-4 col-lg-4">
+            @{
+                <a href="/Work/Index" class="btn btn-warning float-right btn-sm" style="border-radius:5px"><i class="fas fa-sync-alt"></i> Refresh</a>
+                if (TempData.Peek("role").ToString() != "Admin")
+                {
+                    <a href="/Work/Create" style="margin-left:230px;" class="btn btn-success margin-bottom-20 btn-sm">  <i class="fa fa-plus"></i>   Lập công việc</a>
+                }
+
+            }
+        </div>
+    </div>
+    <div class="row">
+        <table class="table table-bordered table-hover table-striped text-center"
+               style="display:block;overflow:auto;border-radius:10px;">
+            <thead class="thead-dark" style="display:table;width:100%;table-layout:fixed">
+                <tr>
+                    <th scope="col">Tiêu đề</th>
+                    <th scope="col">Ngày bắt đầu</th>
+                    <th scope="col">Ngày kết thúc</th>
+                    <th id="range_click" onclick="SortForRange(@size);" scope="col" style="cursor:pointer;">Phạm vi</th>
+                    <th scope="col">Tình trạng</th>
+                    <th scope="col">Thao tác</th>
+                </tr>
+            </thead>
+            <tbody style="display:block;overflow:auto;max-height:500px;width:auto">
+                @if (Model.Works != null) // nếu dữ liệu khác null
+                {
+                    int n = 0;
+                    @foreach (var i in Model.Works)
+                    {
+                        n++;
+                        <tr id="page_@n" style="display:table;width:100%;table-layout:fixed;background-color:white;">
+                            <td><a style="color:black" class="font-weight-normal" asp-route-id="@i.Work_ID" asp-action="Detail" asp-controller="Work">@i.Title</a></td>
+                            <td style="color:black">@i.Start_Date</td>
+                            <td style="color:black">@i.End_Date</td>
+                            <td id="range_@n" style="color:black">@i.Range</td>
+
+                            @foreach (var j in Model.Statuses)
+                            {
+                                if (i.Status_ID == j.Status_ID)
+                                {
+                                    <td>@j.Status_Name</td>
+                                }
+                            }
+                            <td>
+                                <a asp-route-id="@i.Work_ID" asp-action="Detail" asp-controller="Work" class="btn btn-primary btn-sm"><i class="fa fa-eye"></i></a>
+
+                                @{
+                                    if (Model.Staff_ID == i.staffCreate_ID || Model.Staff_ID == 0)
+                                    {
+                                        <a style="margin-top:5px;margin-bottom:5px" asp-route-id="@i.Work_ID" asp-action="Edit" asp-controller="Work" class="btn btn-info btn-sm"><i class='fa fa-edit'></i></a>
+                                        <a asp-route-id="@i.Work_ID" asp-action="Delete" asp-controller="Work" onclick="return hoitruockhixoa()" class="btn btn-danger btn-sm"><i class='fas fa-trash-alt'></i></a>
+                                    }
+                                }
+
+                                @if (i.Status_ID == 1)
+                                {
+                                    <a asp-route-id="@i.Work_ID" asp-action="danhdaucongviec" asp-controller="Work" class="btn btn-outline-success btn-sm"><i class='fas fa-check'></i></a>
+                                }
+                            </td>
+                        </tr>
+
+                    }
+                }
+            </tbody>
+        </table>
+        <div class="mt-3 ml-auto mr-auto">
+            <p class="ml-auto mr-auto page_current">Trang hiện tại: 1</p>
+            <div class="ml-auto mr-auto">
+                @{
+                    for (var i = 1; i <= Math.Ceiling((double)size / 4); i++)
+                    {
+                        <button class="btn-primary font-18 ml-1 rounded" onclick="pagination(@i,@size)">@i</button>
+                    }
+                }
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+
+    var sort = "Public";
+
+    function hoitruockhixoa() {
+        var a = confirm("Bạn có chắc muốn xoá công việc này?");
+        if (a) {
+            alert("Xoá thành công!!!")
+        } else {
+            return false;
+        }
+    }
+
+    // #region Phân trang
+    window.setTimeout("load()", 0);
+    var pageSize = 4;
+    function load() {
+        for (var i = pageSize + 1; i <= 1000; i++) {
+            $("#page_" + i).hide();
+        }
+    }
+    function pagination(pageNumber, size) {
+        $(".page_current").html("Trang hiện tại: " + pageNumber);
+        if (pageNumber == 1) {
+            for (var i = 1; i <= pageSize; i++) {
+                $("#page_" + i).show();
+                $(".showAmount").html("Hiển thị công việc 1 đến 4 trong số " + size + " công việc");
+            }
+            for (var i = pageSize + 1; i <= Math.ceil(size); i++) {
+                $("#page_" + i).hide();
+            }
+        } else {
+            var fromPage = (pageNumber * pageSize) - (pageSize - 1);
+            var toPage = pageNumber * pageSize;
+            for (var i = 1; i < (pageNumber * pageSize) - (pageSize - 1); i++) {
+                $("#page_" + i).hide();
+            }
+            for (var i = (pageNumber * pageSize) - (pageSize - 1); i <= toPage; i++) {
+                $("#page_" + i).show();
+            }
+            for (var i = (pageNumber * pageSize) + 1; i <= size; i++) {
+                $("#page_" + i).hide();
+            }
+            if (toPage > size) {
+                $(".showAmount").html("Hiển thị công việc " + fromPage + " đến " + size + " trong số " + size + " công việc");
+            } else {
+                $(".showAmount").html("Hiển thị công việc " + fromPage + " đến " + toPage + " trong số " + size + " công việc");
+            }
+        }
+    }
+    // #endregion
+
+    function SortForRange(size) {
+        for (var i = 1; i <= size; i++) {
+            var value = $('#page_' + i).find('td:nth-child(4)').text();
+            if (value == sort) {
+                $('#page_' + i).show();
+            } else {
+                $('#page_' + i).hide();
+            }
+        }
+        if (sort == "Public") {
+            sort = "Private";
+        } else {
+            sort = "Public";
+        }
+    }
+
+</script>

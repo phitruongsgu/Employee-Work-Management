@@ -1,0 +1,43 @@
+﻿|=================================================================================|
+|	----------------- Yêu cầu ghi chú the bố cục như sau -----------------    |
+| 	- [ngày / tháng / năm] - [Người chỉnh sửa] : [Nội dung chỉnh sửa]	  |
+|										  |
+|=================================================================================|
+
+
+
+- 31/01/2021 - Vinh : Chỉnh sửa bố cục lại thành 3 lớp (Core-Infrastructure-GUI).
+- 2/2/2021 - Trường : Thêm 1 chút Controller và View, chỉnh lại 1 chút menu sidebar (sẽ còn làm nữa)
+- 4/2/2021 - Trường : Sửa lại giao diện index Work và thêm công việc được, chưa fix được validate(có làm nhưng không nhận) và lỗi giao diện
+- 8/2/2021 - Vinh   : Fix lỗi validate + lỗi layout. Format lại giao diện. Chỉnh sửa hàm Create trong Work
+- 8/2/2021 - Trường : ValidateAntiForgeryToken, thêm 1 số thứ lặt vặt
+- 9/2/2021 - Trường : Sửa lại menu sidebar + thêm page Detail, design lại giao diện Work Index
+- 9/2/2021 - Vinh   : Fix lỗi khi thêm công việc mới 
+		      Chỉnh sửa kiểu dữ liệu của trường Range từ "boolean" => "String"
+		      Tạo session đăng nhập vs KEY là "login"
+                      Thêm bình luận cho công việc bằng Ajax 
+- 20/02/2021 - Trường : Làm lại layout đăng nhập, chỉnh lại Work, thêm AddStaffToWork, viết view AddStaffToWork, Thêm các Entity đơn trong ModelView
+- 22/02/2021 - Vinh : Chuyển xử lý thêm nhân viên vào công việc bằng cách dùng Ajax sang kiểu gọi hàm dùng asp-route asp-action qua Controller		.
+		      Chỉnh lại thanh Scroll cho 2 bảng trong trang thêm nhân viên vào công việc.
+		      Chỉnh sửa lại hàm loại bỏ nhân viên thực hiện cv trong tiến trình thêm nhân viên vào cv.
+		      Viết thêm hàm xóa nhân viên trong công việc truyền vào IDStaff và IDWork trong IStaff_WorkRepository.
+		      Kiểm tra khi đăng nhập tài khoản của nhân viên nào thì chỉ xem được công việc của nhân viên đó tạo và nhân viên đó được người khách thêm làm chung.
+				(tức chỉ load những cv của nhân viên đó thực hiện)
+		      Load dữ liệu của nhân viên lên index dashboard khi đăng nhập tài khoản của nhân viên đó.
+- 23/02/2021 - Vinh : Phân quyền khi đăng nhập. Hiển thị tên nhân viên và chức vụ của nv trên thanh topbar
+- 23/02/2021 -Trường + Thiên : Làm Detail, Edit, Delete công việc, em chỉnh lại giao diện Home/Index, chỉnh lại bố cục của header 1 tý, làm nút tick ở mục thao tác của index work
+- 23/02/2021 - Vinh : Sửa + thêm hàm removeBy_StaffID và removeBy_WorkID
+		      Viết bình luận - xóa bình luận cho công việc
+		      Đánh dấu công việc đã hoàn thành
+- 24/02/2021 - Trường : Đã làm xong Index của Staff Controller, thay đổi icon ở tab cho nó đẹp, chưa làm chức năng thêm, sửa, xoá nhân viên, để hỏi ý kiến a Vinh có cần làm thêm sửa xoá nhân viên hay k?
+- 25/02/2021 - Vinh : Hoàn thiện Bình luận, nhắc nhở công việc. Chỉ admin mới được nhắc nhở công việc và staff chỉ đc xem lời nhắc cv.
+		      Hoàn thiện chỉnh sửa công việc, load được ngày lên khi edit và chỉnh sửa được danh sách nhân viên tham gia công việc.
+		      Kiểm tra hoàn tất chỉ cho nhân viên thêm nhân viên vào cv chứ ko đc quyền thêm admin vào cv của mình. Những ai với quyền admin thì sẽ bị ẩn đi.
+		      Chỉnh lại phân chức vụ hợp lý với quyền Admin tức là chức vụ Giám đốc. 
+- 01/03/2021 - Trường Thiên : Hoàn thiện sửa thêm xoá nhân viên, làm luôn cả tìm kiếm tên nhân viên và tên công việc ở index staff và index work
+- 4/3/2021   - Vinh : Hoàn thành phân trang tất cả các phần. Fix lại giao diện SideBar.
+- 18/03/2021 - Trường: Sửa lại giao diện home/index và sửa sidebar.
+- 18/03/2021 - Vinh: Fix lại chức năng phân trang Dashboard. Sửa lại giao diện Sidebar
+- 23/03/2021 - Fix lại link cho index home, cập nhật nút refresh cho index work và index staff
+--------------------------
+- 15/04/2021 - Chỉnh lại layout login cho nó đẹp, thêm hàm md5 cái password trong action createaccount của staffcontrollerđể khi tạo 1 tài khoản nó mã hoá mật khẩu trong db, chỗ lỗi dashboard thì như em chat trong group threechicken

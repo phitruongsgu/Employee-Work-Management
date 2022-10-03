@@ -1,0 +1,249 @@
+﻿@model ModelView
+@{
+    ViewData["Title"] = "Chi tiết công việc";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container-fluid dashboard-content">
+    <div class="row"><a class="btn btn-primary mb-3 ml-0" asp-action="Index" asp-controller="Work"> <i class="fa fa-reply-all"></i> &nbsp; Quay lại danh sách công việc</a></div>
+    <div class="row" style="font-size:18px">
+        <div class="col-8" style="padding:20px;background-color:white;border:0.5px solid silver;border-radius:5px;">
+            <h1 class="text-center"><i class="bi bi-receipt-cutoff"></i> Mô tả chi tiết công việc</h1>
+            <div class="table-responsive">
+                <table class="table table-sm table-borderless mb-0">
+                    <tbody>
+                        <tr>
+                            <th class="pl-0 w-25" scope="row"><strong>Mã công việc</strong></th>
+                            <td>@Model.work.Work_ID</td>
+                        </tr>
+                        <tr>
+                            <th class="pl-0 w-25" scope="row"><strong>Người tạo công việc</strong></th>
+                            @{
+                                foreach (var i in Model.Staffs)
+                                {
+                                    if (i.Staff_ID == Model.work.staffCreate_ID)
+                                    {
+                                        <td>@i.Staff_Name</td>
+                                    }
+                                }
+                            }
+                        </tr>
+                        <tr>
+                            <th class="pl-0 w-25" scope="row"><strong>Tên công việc</strong></th>
+                            <td>@Model.work.Title</td>
+                        </tr>
+                        <tr>
+                            <th class="pl-0 w-25" scope="row"><strong>Ngày bắt đầu</strong></th>
+                            <td>@Model.work.Start_Date</td>
+                        </tr>
+                        <tr>
+                            <th class="pl-0 w-25" scope="row"><strong>Ngày kết thúc</strong></th>
+                            <td>@Model.work.End_Date</td>
+                        </tr>
+                        <tr>
+                            <th class="pl-0 w-25" scope="row"><strong>Phạm vi</strong></th>
+                            <td>@Model.work.Range</td>
+                        </tr>
+                        <tr>
+                            <th class="pl-0 w-25" scope="row"><strong>Trạng thái</strong></th>
+                            @{
+                                if (Model.work.Status_ID == 1)
+                                {
+                                    <td>Đang trong tiến độ</td>
+                                }
+                                else
+                                {
+                                    if (Model.work.Status_ID == 2)
+                                    {
+
+
+                                        <td>Trễ hạn</td>
+                                    }
+                                    else
+                                    {
+                                        <td>Đã hoàn thành</td>
+                                    }
+                                }
+                            }
+
+                        </tr>
+                        <tr>
+                            <th class="pl-0 w-25" scope="row"><strong>Số người tham gia</strong></th>
+                            @{
+                                var demnhanvien = 0;
+                                var tennhanvienthamgia = "";
+                                var dem = Model.Staff_Works.Count();
+                                foreach (var item in Model.Staff_Works)
+                                {
+                                    demnhanvien++;
+                                    foreach (var i in Model.Staffs)
+                                    {
+                                        if (item.Staff_ID == i.Staff_ID)
+                                        {
+                                            if (demnhanvien == dem)
+                                            {
+                                                tennhanvienthamgia = tennhanvienthamgia + i.Staff_Name;
+                                            }
+                                            else
+                                            {
+                                                tennhanvienthamgia = tennhanvienthamgia + i.Staff_Name + " , ";
+                                            }
+                                        }
+                                    }
+                                }
+
+
+                            }
+                            <td>@demnhanvien</td>
+                        </tr>
+                        <tr>
+                            <th class="pl-0 w-25" scope="row"><strong>Tên thành viên</strong></th>
+                            <td>@tennhanvienthamgia</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="col-4 bg-white" style="padding:20px;background-color:white;border:0.5px solid silver;border-left:none;border-radius:5px;">
+            <div style="margin:0 auto;width:240px;">
+                <button class="btn btn-outline-success" onclick="showParticalComment()" id="cmtClick" style="width:113px;">Bình luận</button>
+                <button class="btn btn-outline-secondary ml-1" onclick="showParticalAnnounce()" id="annClick">Lời nhắc nhở</button>
+            </div>
+            <partial name="_Comment" />
+            <partial name="_Announces" />
+        </div>
+    </div>
+
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<script>
+
+    function showParticalComment() {
+        $("#cmtClick").css("background-color", "#2ec551");
+        $("#cmtClick").css("color", "white");
+        $("#partialComment").css("display", "block");
+        $("#partialAnnounce").css("display", "none");
+        $("#annClick").css("background-color", "white");
+        $("#annClick").css("color", "#ff407b");
+    }
+
+    function showParticalAnnounce() {
+        $("#cmtClick").css("background-color", "white");
+        $("#cmtClick").css("color", "#2ec551");
+        $("#partialComment").css("display", "none");
+        $("#partialAnnounce").css("display", "block");
+        $("#annClick").css("background-color", "#ff407b");
+        $("#annClick").css("color", "white");
+    }
+
+    function sendCmt() {
+        var cmt = $("#cmt").val();
+        if (cmt == "") {
+            alert("Vui lòng nhập nội dung bình luận.!!!");
+            return false;
+        } else {
+            var workID = $("#workID").val();
+            $.ajax({
+                url: "/Work/xulycmt",
+                type: "post",
+                dataType: "json",
+                contentType: "application/json; charset=utf-8",
+                data: JSON.stringify({
+                    "content": cmt,
+                    "workID": workID
+                }),
+                cache: false,
+                success: function (data) {
+                    //var arr = data.split("-");
+                    //var html = '<tr><th scope = "row" ><strong>' + arr[1] + '</strong></th ><td>' + arr[0] + '<a style="margin-left:15px;color:red;font-size:13px;text-decoration:underline;">Xóa</a></td></tr >';
+                    //$("#cmt").val("");
+                    //$("#bodyCmt").append(html);
+                    location.reload();
+                },
+                error: function () {
+                    alert("failt");
+                }
+            });
+        }
+    }
+
+    function sendAnn() {
+        var ann = $("#ann").val();
+        if (ann == "") {
+            alert("Vui lòng nhập nội dung nhắc nhở.!!!");
+            return false;
+        } else {
+            var workID = $("#workID").val();
+            $.ajax({
+                url: "/Work/xulynhacnho",
+                type: "post",
+                dataType: "json",
+                contentType: "application/json; charset=utf-8",
+                data: JSON.stringify({
+                    "content": ann,
+                    "workID": workID
+                }),
+                cache: false,
+                success: function (data) {
+                    //var arr = data.split("-");
+                    //var html = '<tr><th scope = "row" ><strong>' + arr[1] + '</strong></th ><td>' + arr[0] + '<a style="margin-left:15px;color:red;font-size:13px;text-decoration:underline;">Xóa</a></td></tr >';
+                    //$("#cmt").val("");
+                    //$("#bodyCmt").append(html);
+                    location.reload();
+                },
+                error: function () {
+                    alert("failt");
+                }
+            });
+        }
+    }
+
+    function removeCMT(id) {
+        var a = confirm("Bạn có chắc muốn xoá bình luận này?");
+        if (a) {
+            $.ajax({
+                url: "/Work/xoacmt",
+                type: "post",
+                dataType: "json",
+                contentType: "application/json; charset=utf-8",
+                data: JSON.stringify({
+                    "cmtID": id
+                }),
+                cache: false,
+                success: function () {
+                    location.reload();
+                },
+                error: function () {
+                    alert("failt");
+                }
+            });
+        }
+
+    }
+
+    function removeANN(id) {
+        var a = confirm("Bạn có chắc muốn xoá lời nhắc này?");
+        if (a) {
+            $.ajax({
+                url: "/Work/xoaloinhac",
+                type: "post",
+                dataType: "json",
+                contentType: "application/json; charset=utf-8",
+                data: JSON.stringify({
+                    "cmtID": id
+                }),
+                cache: false,
+                success: function () {
+                    location.reload();
+                    showParticalAnnounce();
+                },
+                error: function () {
+                    alert("failt");
+                }
+            });
+        }
+
+    }
+</script>

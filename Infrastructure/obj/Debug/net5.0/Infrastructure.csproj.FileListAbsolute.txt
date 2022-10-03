@@ -1,0 +1,98 @@
+D:\CodeC#\.NET CORE MVC\QuanLyCongViecNhanVien\Infrastructure\bin\Debug\net5.0\Application.dll
+D:\CodeC#\.NET CORE MVC\QuanLyCongViecNhanVien\Infrastructure\bin\Debug\net5.0\Domain.dll
+D:\CodeC#\.NET CORE MVC\QuanLyCongViecNhanVien\Infrastructure\obj\Debug\net5.0\Infrastructure.csprojAssemblyReference.cache
+D:\CodeC#\.NET CORE MVC\QuanLyCongViecNhanVien\Infrastructure\obj\Debug\net5.0\Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+D:\CodeC#\.NET CORE MVC\QuanLyCongViecNhanVien\Infrastructure\obj\Debug\net5.0\Infrastructure.AssemblyInfoInputs.cache
+D:\CodeC#\.NET CORE MVC\QuanLyCongViecNhanVien\Infrastructure\obj\Debug\net5.0\Infrastructure.AssemblyInfo.cs
+D:\CodeC#\.NET CORE MVC\QuanLyCongViecNhanVien\Infrastructure\bin\Debug\net5.0\Infrastructure.deps.json
+D:\CodeC#\.NET CORE MVC\QuanLyCongViecNhanVien\Infrastructure\bin\Debug\net5.0\Infrastructure.dll
+D:\CodeC#\.NET CORE MVC\QuanLyCongViecNhanVien\Infrastructure\bin\Debug\net5.0\ref\Infrastructure.dll
+D:\CodeC#\.NET CORE MVC\QuanLyCongViecNhanVien\Infrastructure\bin\Debug\net5.0\Infrastructure.pdb
+D:\CodeC#\.NET CORE MVC\QuanLyCongViecNhanVien\Infrastructure\bin\Debug\net5.0\Application.pdb
+D:\CodeC#\.NET CORE MVC\QuanLyCongViecNhanVien\Infrastructure\bin\Debug\net5.0\Domain.pdb
+D:\CodeC#\.NET CORE MVC\QuanLyCongViecNhanVien\Infrastructure\obj\Debug\net5.0\Infrastructure.csproj.CoreCompileInputs.cache
+D:\CodeC#\.NET CORE MVC\QuanLyCongViecNhanVien\Infrastructure\obj\Debug\net5.0\Infrastructure.csproj.CopyComplete
+D:\CodeC#\.NET CORE MVC\QuanLyCongViecNhanVien\Infrastructure\obj\Debug\net5.0\Infrastructure.dll
+D:\CodeC#\.NET CORE MVC\QuanLyCongViecNhanVien\Infrastructure\obj\Debug\net5.0\ref\Infrastructure.dll
+D:\CodeC#\.NET CORE MVC\QuanLyCongViecNhanVien\Infrastructure\obj\Debug\net5.0\Infrastructure.pdb
+C:\Users\Admin\Documents\Visual Studio 2019\QuanLyCongViecNhanVien\Infrastructure\bin\Debug\net5.0\Infrastructure.deps.json
+C:\Users\Admin\Documents\Visual Studio 2019\QuanLyCongViecNhanVien\Infrastructure\bin\Debug\net5.0\Infrastructure.dll
+C:\Users\Admin\Documents\Visual Studio 2019\QuanLyCongViecNhanVien\Infrastructure\bin\Debug\net5.0\ref\Infrastructure.dll
+C:\Users\Admin\Documents\Visual Studio 2019\QuanLyCongViecNhanVien\Infrastructure\bin\Debug\net5.0\Infrastructure.pdb
+C:\Users\Admin\Documents\Visual Studio 2019\QuanLyCongViecNhanVien\Infrastructure\bin\Debug\net5.0\Application.dll
+C:\Users\Admin\Documents\Visual Studio 2019\QuanLyCongViecNhanVien\Infrastructure\bin\Debug\net5.0\Domain.dll
+C:\Users\Admin\Documents\Visual Studio 2019\QuanLyCongViecNhanVien\Infrastructure\bin\Debug\net5.0\Application.pdb
+C:\Users\Admin\Documents\Visual Studio 2019\QuanLyCongViecNhanVien\Infrastructure\bin\Debug\net5.0\Domain.pdb
+C:\Users\Admin\Documents\Visual Studio 2019\QuanLyCongViecNhanVien\Infrastructure\obj\Debug\net5.0\Infrastructure.csprojAssemblyReference.cache
+C:\Users\Admin\Documents\Visual Studio 2019\QuanLyCongViecNhanVien\Infrastructure\obj\Debug\net5.0\Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Admin\Documents\Visual Studio 2019\QuanLyCongViecNhanVien\Infrastructure\obj\Debug\net5.0\Infrastructure.AssemblyInfoInputs.cache
+C:\Users\Admin\Documents\Visual Studio 2019\QuanLyCongViecNhanVien\Infrastructure\obj\Debug\net5.0\Infrastructure.AssemblyInfo.cs
+C:\Users\Admin\Documents\Visual Studio 2019\QuanLyCongViecNhanVien\Infrastructure\obj\Debug\net5.0\Infrastructure.csproj.CoreCompileInputs.cache
+C:\Users\Admin\Documents\Visual Studio 2019\QuanLyCongViecNhanVien\Infrastructure\obj\Debug\net5.0\Infrastructure.csproj.CopyComplete
+C:\Users\Admin\Documents\Visual Studio 2019\QuanLyCongViecNhanVien\Infrastructure\obj\Debug\net5.0\Infrastructure.dll
+C:\Users\Admin\Documents\Visual Studio 2019\QuanLyCongViecNhanVien\Infrastructure\obj\Debug\net5.0\ref\Infrastructure.dll
+C:\Users\Admin\Documents\Visual Studio 2019\QuanLyCongViecNhanVien\Infrastructure\obj\Debug\net5.0\Infrastructure.pdb
+D:\CodeC#\.NET CORE MVC\QuanLyCongViecNhanVien_ok\QuanLyCongViecNhanVien\Infrastructure\bin\Debug\net5.0\Infrastructure.deps.json
+D:\CodeC#\.NET CORE MVC\QuanLyCongViecNhanVien_ok\QuanLyCongViecNhanVien\Infrastructure\bin\Debug\net5.0\Infrastructure.dll
+D:\CodeC#\.NET CORE MVC\QuanLyCongViecNhanVien_ok\QuanLyCongViecNhanVien\Infrastructure\bin\Debug\net5.0\ref\Infrastructure.dll
+D:\CodeC#\.NET CORE MVC\QuanLyCongViecNhanVien_ok\QuanLyCongViecNhanVien\Infrastructure\bin\Debug\net5.0\Infrastructure.pdb
+D:\CodeC#\.NET CORE MVC\QuanLyCongViecNhanVien_ok\QuanLyCongViecNhanVien\Infrastructure\bin\Debug\net5.0\Application.dll
+D:\CodeC#\.NET CORE MVC\QuanLyCongViecNhanVien_ok\QuanLyCongViecNhanVien\Infrastructure\bin\Debug\net5.0\Domain.dll
+D:\CodeC#\.NET CORE MVC\QuanLyCongViecNhanVien_ok\QuanLyCongViecNhanVien\Infrastructure\bin\Debug\net5.0\Application.pdb
+D:\CodeC#\.NET CORE MVC\QuanLyCongViecNhanVien_ok\QuanLyCongViecNhanVien\Infrastructure\bin\Debug\net5.0\Domain.pdb
+D:\CodeC#\.NET CORE MVC\QuanLyCongViecNhanVien_ok\QuanLyCongViecNhanVien\Infrastructure\obj\Debug\net5.0\Infrastructure.csprojAssemblyReference.cache
+D:\CodeC#\.NET CORE MVC\QuanLyCongViecNhanVien_ok\QuanLyCongViecNhanVien\Infrastructure\obj\Debug\net5.0\Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+D:\CodeC#\.NET CORE MVC\QuanLyCongViecNhanVien_ok\QuanLyCongViecNhanVien\Infrastructure\obj\Debug\net5.0\Infrastructure.AssemblyInfoInputs.cache
+D:\CodeC#\.NET CORE MVC\QuanLyCongViecNhanVien_ok\QuanLyCongViecNhanVien\Infrastructure\obj\Debug\net5.0\Infrastructure.AssemblyInfo.cs
+D:\CodeC#\.NET CORE MVC\QuanLyCongViecNhanVien_ok\QuanLyCongViecNhanVien\Infrastructure\obj\Debug\net5.0\Infrastructure.csproj.CoreCompileInputs.cache
+D:\CodeC#\.NET CORE MVC\QuanLyCongViecNhanVien_ok\QuanLyCongViecNhanVien\Infrastructure\obj\Debug\net5.0\Infrastructure.csproj.CopyComplete
+D:\CodeC#\.NET CORE MVC\QuanLyCongViecNhanVien_ok\QuanLyCongViecNhanVien\Infrastructure\obj\Debug\net5.0\Infrastructure.dll
+D:\CodeC#\.NET CORE MVC\QuanLyCongViecNhanVien_ok\QuanLyCongViecNhanVien\Infrastructure\obj\Debug\net5.0\ref\Infrastructure.dll
+D:\CodeC#\.NET CORE MVC\QuanLyCongViecNhanVien_ok\QuanLyCongViecNhanVien\Infrastructure\obj\Debug\net5.0\Infrastructure.pdb
+D:\PRJ\Infrastructure\obj\Debug\net5.0\Infrastructure.csprojAssemblyReference.cache
+D:\PRJ\Infrastructure\obj\Debug\net5.0\Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+D:\PRJ\Infrastructure\obj\Debug\net5.0\Infrastructure.AssemblyInfoInputs.cache
+D:\PRJ\Infrastructure\obj\Debug\net5.0\Infrastructure.AssemblyInfo.cs
+D:\PRJ\Infrastructure\obj\Debug\net5.0\Infrastructure.csproj.CoreCompileInputs.cache
+D:\PRJ\Infrastructure\obj\Debug\net5.0\Infrastructure.dll
+D:\PRJ\Infrastructure\obj\Debug\net5.0\ref\Infrastructure.dll
+D:\PRJ\Infrastructure\obj\Debug\net5.0\Infrastructure.pdb
+D:\PRJ\Infrastructure\bin\Debug\net5.0\Infrastructure.deps.json
+D:\PRJ\Infrastructure\bin\Debug\net5.0\Infrastructure.dll
+D:\PRJ\Infrastructure\bin\Debug\net5.0\ref\Infrastructure.dll
+D:\PRJ\Infrastructure\bin\Debug\net5.0\Infrastructure.pdb
+D:\PRJ\Infrastructure\bin\Debug\net5.0\Application.dll
+D:\PRJ\Infrastructure\bin\Debug\net5.0\Domain.dll
+D:\PRJ\Infrastructure\bin\Debug\net5.0\Application.pdb
+D:\PRJ\Infrastructure\bin\Debug\net5.0\Domain.pdb
+D:\PRJ\Infrastructure\obj\Debug\net5.0\Infrastructure.csproj.CopyComplete
+D:\Documents\Github Manager\EmployeeWorkManagement\Infrastructure\bin\Debug\net5.0\Infrastructure.deps.json
+D:\Documents\Github Manager\EmployeeWorkManagement\Infrastructure\bin\Debug\net5.0\Infrastructure.dll
+D:\Documents\Github Manager\EmployeeWorkManagement\Infrastructure\bin\Debug\net5.0\ref\Infrastructure.dll
+D:\Documents\Github Manager\EmployeeWorkManagement\Infrastructure\bin\Debug\net5.0\Infrastructure.pdb
+D:\Documents\Github Manager\EmployeeWorkManagement\Infrastructure\bin\Debug\net5.0\Core.dll
+D:\Documents\Github Manager\EmployeeWorkManagement\Infrastructure\bin\Debug\net5.0\Core.pdb
+D:\Documents\Github Manager\EmployeeWorkManagement\Infrastructure\obj\Debug\net5.0\Infrastructure.csprojAssemblyReference.cache
+D:\Documents\Github Manager\EmployeeWorkManagement\Infrastructure\obj\Debug\net5.0\Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+D:\Documents\Github Manager\EmployeeWorkManagement\Infrastructure\obj\Debug\net5.0\Infrastructure.AssemblyInfoInputs.cache
+D:\Documents\Github Manager\EmployeeWorkManagement\Infrastructure\obj\Debug\net5.0\Infrastructure.AssemblyInfo.cs
+D:\Documents\Github Manager\EmployeeWorkManagement\Infrastructure\obj\Debug\net5.0\Infrastructure.csproj.CoreCompileInputs.cache
+D:\Documents\Github Manager\EmployeeWorkManagement\Infrastructure\obj\Debug\net5.0\Infrastructure.csproj.CopyComplete
+D:\Documents\Github Manager\EmployeeWorkManagement\Infrastructure\obj\Debug\net5.0\Infrastructure.dll
+D:\Documents\Github Manager\EmployeeWorkManagement\Infrastructure\obj\Debug\net5.0\ref\Infrastructure.dll
+D:\Documents\Github Manager\EmployeeWorkManagement\Infrastructure\obj\Debug\net5.0\Infrastructure.pdb
+D:\CodeC#\.NET CORE MVC\Project_2_EmployeeWorkManagement\EmployeeWorkManagement\Infrastructure\bin\Debug\net5.0\Infrastructure.deps.json
+D:\CodeC#\.NET CORE MVC\Project_2_EmployeeWorkManagement\EmployeeWorkManagement\Infrastructure\bin\Debug\net5.0\Infrastructure.dll
+D:\CodeC#\.NET CORE MVC\Project_2_EmployeeWorkManagement\EmployeeWorkManagement\Infrastructure\bin\Debug\net5.0\Infrastructure.pdb
+D:\CodeC#\.NET CORE MVC\Project_2_EmployeeWorkManagement\EmployeeWorkManagement\Infrastructure\bin\Debug\net5.0\Core.dll
+D:\CodeC#\.NET CORE MVC\Project_2_EmployeeWorkManagement\EmployeeWorkManagement\Infrastructure\bin\Debug\net5.0\Core.pdb
+D:\CodeC#\.NET CORE MVC\Project_2_EmployeeWorkManagement\EmployeeWorkManagement\Infrastructure\obj\Debug\net5.0\Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+D:\CodeC#\.NET CORE MVC\Project_2_EmployeeWorkManagement\EmployeeWorkManagement\Infrastructure\obj\Debug\net5.0\Infrastructure.AssemblyInfoInputs.cache
+D:\CodeC#\.NET CORE MVC\Project_2_EmployeeWorkManagement\EmployeeWorkManagement\Infrastructure\obj\Debug\net5.0\Infrastructure.AssemblyInfo.cs
+D:\CodeC#\.NET CORE MVC\Project_2_EmployeeWorkManagement\EmployeeWorkManagement\Infrastructure\obj\Debug\net5.0\Infrastructure.csproj.CoreCompileInputs.cache
+D:\CodeC#\.NET CORE MVC\Project_2_EmployeeWorkManagement\EmployeeWorkManagement\Infrastructure\obj\Debug\net5.0\Infrastructure.csproj.CopyComplete
+D:\CodeC#\.NET CORE MVC\Project_2_EmployeeWorkManagement\EmployeeWorkManagement\Infrastructure\obj\Debug\net5.0\Infrastructure.dll
+D:\CodeC#\.NET CORE MVC\Project_2_EmployeeWorkManagement\EmployeeWorkManagement\Infrastructure\obj\Debug\net5.0\ref\Infrastructure.dll
+D:\CodeC#\.NET CORE MVC\Project_2_EmployeeWorkManagement\EmployeeWorkManagement\Infrastructure\obj\Debug\net5.0\Infrastructure.pdb
+D:\CodeC#\.NET CORE MVC\Project_2_EmployeeWorkManagement\EmployeeWorkManagement\Infrastructure\obj\Debug\net5.0\Infrastructure.csproj.AssemblyReference.cache
+D:\CodeC#\.NET CORE MVC\Project_2_EmployeeWorkManagement\EmployeeWorkManagement\Infrastructure\obj\Debug\net5.0\refint\Infrastructure.dll

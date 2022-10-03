@@ -1,0 +1,68 @@
+﻿@model ModelView
+@{
+    ViewData["Title"] = "Chỉnh sửa công việc";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@{ 
+    var start = Model.work.Start_Date.Split("-");
+    var convertStartDate = start[2] + "-" + start[1] + "-" + start[0];
+    var end = Model.work.End_Date.Split("-");
+    var convertEndDate = end[2] + "-" + end[1] + "-" + end[0];
+}
+<div class="container dashboard-content">
+    <div class="text-right">
+        <a href="/Work/Index" class="btn btn-primary"> <i class="fa fa-reply-all"></i> &nbsp; Quay lại danh sách công việc</a>
+    </div>
+    <h1 style="text-align:center"> <i class="fa fa-pencil-alt"></i>&nbsp;Chỉnh sửa công việc</h1>
+    <form href="/Work/Edit" method="POST" style="width:600px;margin:0 auto;">
+        <div hidden>
+            <label>ID công việc</label>
+            <input asp-for="@Model.WM.WorkID" value="@Model.work.Work_ID" type="text" />
+        </div>
+        <div class="form-group">
+            <label class="font-weight-bold" asp-for="@Model.WM.Title"></label>
+            <input asp-for="@Model.WM.Title" value="@Model.work.Title" class="form-control" />
+            <span asp-validation-for="WM.Title" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label class="font-weight-bold" asp-for="@Model.WM.StartDate"></label>
+            <input type="date" value="@convertStartDate" asp-for="@Model.WM.StartDate" class="form-control" style="cursor:pointer;" />
+            @Html.ValidationMessageFor(model => model.WM.StartDate, null, new { @class = "text-danger" })
+        </div>
+        <div class="form-group">
+            <label class="font-weight-bold" asp-for="@Model.WM.EndDate"></label>
+            <input type="date" value="@convertEndDate" asp-for="@Model.WM.EndDate" class="form-control" style="cursor:pointer;" />
+            @Html.ValidationMessageFor(model => model.WM.EndDate, null, new { @class = "text-danger" })
+        </div>
+
+        <div class="form-group">
+            <label class="font-weight-bold" asp-for="@Model.WM.Range"></label>
+            <select value="@Model.work.Range" class="form-control" asp-for="@Model.WM.Range" style="cursor:pointer;">
+                <option value="Public">Public</option>
+                <option value="Private">Private</option>
+            </select>
+        </div>
+
+        @*<div class="form-group">
+                <label class="font-weight-bold" asp-for="@Model.WM.FileName"></label>
+                <input asp-for="@Model.WM.FileName" class="form-control" />
+            </div>*@
+
+        <div class="form-group">
+            <label class="font-weight-bold" asp-for="@Model.WM.StatusID"></label>
+            <select value="@Model.work.Status_ID" class="form-control" asp-for="@Model.WM.StatusID" style="cursor:pointer;">
+                <option value="1">Đang trong tiến độ</option>
+                <option value="2">Trễ hạn</option>
+                <option value="3">Đã hoàn thành</option>
+            </select>
+        </div>
+        <div class="text-right mt-3">
+            <button class="btn btn-danger mb-2 mr-1" type="submit">Hoàn tất cập nhật</button>
+            <a class="btn btn-success mb-2"
+               asp-action="EditStaffToWork"
+               asp-controller="Work"
+               asp-route-idWork="@Model.work.Work_ID">Điều chỉnh danh sách nhân viên tham gia &ensp;<i class="fa fa-angle-double-right" style="font-size:18px;"></i></a>
+        </div>
+    </form>
+
+</div>

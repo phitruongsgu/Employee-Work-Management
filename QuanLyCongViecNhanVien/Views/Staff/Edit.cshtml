@@ -1,0 +1,77 @@
+﻿@model ModelView
+@{
+    ViewData["Title"] = "Chỉnh sửa thông tin nhân viên";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var sinhnhat = Model.staff.Birthday.Split("/");
+    var convertBirthdate = sinhnhat[2] + "-" + sinhnhat[1] + "-" + sinhnhat[0];
+}
+
+<div class="container dashboard-content">
+    <div class="text-right">
+        <a href="/Staff/Index" class="btn btn-primary"> <i class="fa fa-reply-all"></i> &nbsp; Quay lại danh sách nhân viên</a>
+    </div>
+    <h1 style="text-align:center"> <i class="fa fa-pencil-alt"></i>&nbsp;Chỉnh sửa thông tin nhân viên</h1>
+    <form href="/Work/Edit" method="POST" style="width:600px;margin:0 auto;">
+        <div hidden>
+            <label>ID nhân viên</label>
+            <input asp-for="@Model.SM.StaffID" value="@Model.staff.Staff_ID" type="text" />
+        </div>
+        <div hidden>
+            <label>ID tài khoản</label>
+            <input asp-for="@Model.SM.Account_ID" value="@Model.staff.Account_ID" type="text" />
+        </div>
+        <div class="form-group">
+            <label class="font-weight-bold" asp-for="@Model.SM.Staff_Name"></label>
+            <input asp-for="@Model.SM.Staff_Name" value="@Model.staff.Staff_Name" class="form-control" />
+            <span asp-validation-for="SM.Staff_Name" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label class="font-weight-bold" asp-for="@Model.SM.Birthday"></label>
+            <input type="date" value="@convertBirthdate" asp-for="@Model.SM.Birthday" class="form-control" style="cursor:pointer;" />
+            @Html.ValidationMessageFor(model => model.SM.Birthday, null, new { @class = "text-danger" })
+        </div>
+        <div class="form-group">
+            <label class="font-weight-bold" asp-for="@Model.SM.ID_Card"></label>
+            <input asp-for="@Model.SM.ID_Card" value="@Model.staff.ID_Card" class="form-control" />
+            <span asp-validation-for="SM.ID_Card" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label class="font-weight-bold" asp-for="@Model.SM.Gender"></label>
+            <select value="@Model.staff.Gender" class="form-control" asp-for="@Model.SM.Gender" style="cursor:pointer;">
+                <option value="Male">Nam</option>
+                <option value="Female">Nữ</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label class="font-weight-bold" asp-for="@Model.SM.EmailAddress"></label>
+            <input asp-for="@Model.SM.EmailAddress" value="@Model.staff.EmailAddress" class="form-control" />
+            <span asp-validation-for="SM.EmailAddress" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label class="font-weight-bold" asp-for="@Model.SM.PhoneNumber"></label>
+            <input asp-for="@Model.SM.PhoneNumber" value="@Model.staff.PhoneNumber" class="form-control" />
+            <span asp-validation-for="SM.PhoneNumber" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label class="font-weight-bold" asp-for="@Model.SM.Status"></label>
+            <select value="@Model.staff.Status" class="form-control" asp-for="@Model.SM.Status" style="cursor:pointer;">
+                <option value="true">Hoạt động</option>
+                <option value="false">Không hoạt động</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label class="font-weight-bold" asp-for="@Model.SM.Position_ID"></label>
+            <select value="@Model.staff.Position_ID" class="form-control" asp-for="@Model.SM.Position_ID" style="cursor:pointer;">
+                <option value="2">Nhân viên</option>
+                <option value="3">Quản lý</option>
+                <option value="4">Thư ký</option>
+            </select>
+        </div>
+        <div class="text-right mt-3">
+            <button class="btn btn-danger mb-5 mr-1" type="submit">Hoàn tất</button>
+        </div>
+    </form>
+
+</div>

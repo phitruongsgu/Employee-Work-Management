@@ -1,0 +1,354 @@
+﻿
+@model HomeViewModel
+
+@{
+    ViewData["Title"] = "Trang chủ";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="container-fluid dashboard-content">
+    <!-- ============================================================== -->
+    <!-- page header  -->
+    <!-- ============================================================== -->
+    <div class="row">
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+            <div class="page-header">
+                <h1 style="border:none;border-bottom:0.5px solid silver;padding-bottom:5px;" class="pageheader-title font-weight-bold"><i class="fa fa-tachometer-alt"></i>&ensp;Bảng điều khiển</h1>
+            </div>
+        </div>
+    </div>
+    <!-- ============================================================== -->
+    <!-- end pageheader  -->
+    <!-- ============================================================== -->
+    <div class="ecommerce-widget">
+        <style>
+            .bong {
+                box-shadow: 10px 10px 10px 5px #999999;
+            }
+            .bong_trangthai {
+                box-shadow: 5px 5px 3px #999999;
+            }
+        </style>
+        <div class="row">
+            <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12">
+                <div class="card bong">
+                    <h3 class="text-center font-weight-bold bg-light rounded-top pb-2 pt-2">Tổng số công việc</h3>
+                    <div class="card-body">
+                        <div class="metric-value d-inline-block">
+                            <h1 class="mb-1" style="text-align:center;width:200px;">@Model.countWorks</h1>
+                        </div>
+                    </div>
+                    <div id="sparkline-revenue"></div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12">
+                <div class="card bong">
+                    <h3 class="text-center font-weight-bold bg-success text-white rounded-top pb-2 pt-2">Đang thực hiện</h3>
+                    <div class="card-body">
+                        <div class="metric-value d-inline-block">
+                            <h1 class="mb-1" style="text-align:center;width:200px;">@Model.countDoingForWorks</h1>
+                        </div>
+                    </div>
+                    <div id="sparkline-revenue2"></div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12">
+                <div class="card bong">
+                    <h3 class="text-center font-weight-bold bg-danger text-white rounded-top pb-2 pt-2">Trễ hẹn</h3>
+                    <div class="card-body">
+                        <div class="metric-value d-inline-block">
+                            <h1 class="mb-1" style="text-align:center;width:200px;">@Model.countLateForWorks</h1>
+                        </div>
+                    </div>
+                    <div id="sparkline-revenue4"></div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-lg-6 col-md-6 col-sm-12 col-12">
+                <div class="card bong">
+                    <h3 class="text-center font-weight-bold bg-dark text-white rounded-top pb-2 pt-2">Đã hoàn thành</h3>
+                    <div class="card-body">
+                        <div class="metric-value d-inline-block">
+                            <h1 class="mb-1" style="text-align:center;width:200px;">@Model.countFinishForWorks</h1>
+                        </div>
+                    </div>
+                    <div id="sparkline-revenue3"></div>
+                </div>
+            </div>
+        </div>
+        <div class="text-dark bg-white mb-4 rounded bong_trangthai">
+            <div class="row">
+                <div class="col-3 pt-4 pb-2" align="center">
+                    <h2 style="font-size:25px;">Trạng thái công việc:</h2>
+                </div>
+                @{
+                    foreach (var i in Model.GetStatuses)
+                    {
+                        if (i.Status_ID == 1)
+                        {
+                            <div class="col-3 pt-4 pb-3" align="center">
+                                <div class="rounded" style="background-color:green;width:20px;height:20px;display:inline-block"></div>
+                                <p class="font-20" style="color:green;display:inline-block">&nbsp; @i.Status_Name</p>
+                            </div>
+                        }
+                        if (i.Status_ID == 2)
+                        {
+                            <div class="col-3 pt-4 pb-3" align="center">
+                                <div class="rounded" style="background-color:red;width:20px;height:20px;display:inline-block"></div>
+                                <p class="font-20" style="color:red;display:inline-block">&nbsp; @i.Status_Name</p>
+                            </div>
+                        }
+                        if (i.Status_ID == 3)
+                        {
+                            <div class="col-3 pt-4 pb-3" align="center">
+                                <div class="rounded" style="background-color:black;width:20px;height:20px;display:inline-block"></div>
+                                <p class="font-20" style="color:black;display:inline-block">&nbsp; @i.Status_Name</p>
+                            </div>
+                        }
+                    }
+                }
+            </div>
+        </div>
+
+        <div class="row">
+            <!-- ============================================================== -->
+            <!-- ============================================================== -->
+            <!-- recent orders  -->
+            <!-- ============================================================== -->
+            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6">
+                <div class="card bong_trangthai">
+                    <h4 class="card-header font-weight-bold">
+                        DANH SÁCH CÁC CÔNG VIỆC ĐANG THỰC HIỆN
+                    </h4>
+                    <div class="card-body p-0">
+                        <div class="table-responsive">
+                            <table class="table table-striped">
+                                <thead class="bg-warning">
+                                    <tr class="border-0">
+                                        <th class="border-0 font-weight-bold">STT</th>
+                                        <th class="border-0 font-weight-bold">Tiêu đề</th>
+                                        <th class="border-0 font-weight-bold">Ngày bắt đầu</th>
+                                        <th class="border-0 font-weight-bold">Ngày kết thúc</th>
+                                        <th class="border-0 font-weight-bold">Phạm vi</th>
+                                        @*<th class="border-0 font-weight-bold">ID trạng thái</th>*@
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @{
+                                        int stt = 0;
+                                        foreach (var i in Model.GetWorks)
+                                        {
+                                            if (i.Status_ID == 1)
+                                            {
+                                                stt++;
+                                                <tr id="page_@stt" style="color:green;cursor:pointer">
+                                                    <td>@stt</td>
+                                                    <td class="font-weight-bold"><a style="color:green" asp-route-id="@i.Work_ID" asp-action="Detail" asp-controller="Work">@i.Title</a></td>
+                                                    <td>@i.Start_Date </td>
+                                                    <td>@i.End_Date</td>
+                                                    <td>@i.Range</td>
+                                                    @*<td>#@i.Status_ID</td>*@
+                                                </tr>
+                                            }
+                                            else if (i.Status_ID == 2)
+                                            {
+                                                stt++;
+                                                <tr id="page_@stt" style="color:red;cursor:pointer">
+                                                    <td>@stt</td>
+                                                    <td><a style="color:red" asp-route-id="@i.Work_ID" asp-action="Detail" asp-controller="Work">@i.Title</a></td>
+                                                    <td>@i.Start_Date </td>
+                                                    <td>@i.End_Date</td>
+                                                    <td>@i.Range</td>
+                                                    @*<td>#@i.Status_ID</td>*@
+                                                </tr>
+
+                                            }
+                                        }
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="ml-auto">
+                        <div class="ml-auto mb-1">
+                            @{
+                                var size = Model.GetWorks.Where(p => p.Status_ID != 3).Count();
+                                for (var i = 1; i <= Math.Ceiling((double)size / 4); i++)
+                                {
+                                    <button class="btn-warning font-16 ml-0 mt-2 mr-1 rounded" onclick="pagination(@i,@size)">@i</button>
+                                }
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- ============================================================== -->
+            <!-- end recent orders  -->
+            <!-- ============================================================== -->
+            <!-- ============================================================== -->
+            <div class="col-xl-6 col-lg-6 col-md-6 col-sm-6 col-6">
+                <!-- ============================================================== -->
+                <!-- top perfomimg  -->
+                <!-- ============================================================== -->
+                @*<div class="card">
+                        <h4 class="card-header font-weight-bold">TRẠNG THÁI CÔNG VIỆC</h4>
+                        <div class="card-body p-0">
+                            <div class="table-responsive">
+                                <table class="table no-wrap p-table">
+                                    <thead class="bg-warning">
+                                        <tr class="border-0">
+                                            <th class="border-0 font-weight-bold">ID</th>
+                                            <th class="border-0 font-weight-bold">Trạng thái</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @{
+                                            foreach (var i in Model.GetStatuses)
+                                            {
+                                                if (i.Status_ID == 1)
+                                                {
+                                                    <tr style="color:green">
+                                                        <td>#@i.Status_ID</td>
+                                                        <td>@i.Status_Name</td>
+                                                    </tr>
+                                                }
+                                                if (i.Status_ID == 2)
+                                                {
+                                                    <tr style="color:red;font-weight:700;font-size:16px">
+                                                        <td>#@i.Status_ID</td>
+                                                        <td>@i.Status_Name</td>
+                                                    </tr>
+                                                }
+                                                if (i.Status_ID == 3)
+                                                {
+                                                    <tr>
+                                                        <td>#@i.Status_ID</td>
+                                                        <td>@i.Status_Name</td>
+                                                    </tr>
+                                                }
+                                            }
+                                        }
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>*@
+                <div class="card bong_trangthai">
+                    <h4 class="card-header font-weight-bold">
+                        DANH SÁCH CÁC CÔNG VIỆC ĐÃ HOÀN THÀNH
+                    </h4>
+                    <div class="card-body p-0">
+                        <div class="table-responsive">
+                            <table class="table table-striped">
+                                <thead class="bg-warning">
+                                    <tr class="border-0">
+                                        <th class="border-0 font-weight-bold">STT</th>
+                                        <th class="border-0 font-weight-bold">Tiêu đề</th>
+                                        <th class="border-0 font-weight-bold">Ngày bắt đầu</th>
+                                        <th class="border-0 font-weight-bold">Ngày kết thúc</th>
+                                        <th class="border-0 font-weight-bold">Phạm vi</th>
+                                        @*<th class="border-0 font-weight-bold">ID trạng thái</th>*@
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @{
+                                        int stt1 = 0;
+                                        foreach (var i in Model.GetWorks)
+                                        {
+                                            if (i.Status_ID == 3)
+                                            {
+                                                stt1++;
+                                                <tr id="page1_@stt1" style="cursor:pointer;">
+                                                    <td>@stt1</td>
+                                                    <td><a style="color:black" asp-route-id="@i.Work_ID" asp-action="Detail" asp-controller="Work">@i.Title</a></td>
+                                                    <td>@i.Start_Date </td>
+                                                    <td>@i.End_Date</td>
+                                                    <td>@i.Range</td>
+                                                    @*<td>#@i.Status_ID</td>*@
+                                                </tr>
+                                            }
+                                        }
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="ml-auto">
+                        <div class="ml-auto mb-1">
+                            @{
+                                var size1 = Model.GetWorks.Where(p => p.Status_ID == 3).Count();
+                                for (var i = 1; i <= Math.Ceiling((double)size1 / 4); i++)
+                                {
+                                    <button class="btn-warning font-16 ml-0 mt-2 mr-1 rounded" onclick="pagination_success(@i,@size1)">@i</button>
+                                }
+                            }
+                        </div>
+                    </div>
+                </div>
+                <!-- ============================================================== -->
+                <!-- end top perfomimg  -->
+                <!-- ============================================================== -->
+            </div>
+        </div>
+        <div class="row mt-4">
+        </div>
+
+    </div>
+</div>
+
+<script>
+    // #region Phân trang
+    window.setTimeout("load()", 0);
+    var pageSize = 4;
+    function load() {
+        for (var i = pageSize + 1; i <= 1000; i++) {
+            $("#page_" + i).hide();
+            $("#page1_" + i).hide();
+        }
+    }
+    function pagination(pageNumber, size) {
+        //$(".page_current").html("Trang hiện tại: " + pageNumber);
+        if (pageNumber == 1) {
+            for (var i = 1; i <= pageSize; i++) {
+                $("#page_" + i).show();
+            }
+            for (var i = pageSize + 1; i <= Math.ceil(size); i++) {
+                $("#page_" + i).hide();
+            }
+        } else {
+            var fromPage = (pageNumber * pageSize) - (pageSize - 1);
+            var toPage = pageNumber * pageSize;
+            for (var i = 1; i < (pageNumber * pageSize) - (pageSize - 1); i++) {
+                $("#page_" + i).hide();
+            }
+            for (var i = (pageNumber * pageSize) - (pageSize - 1); i <= toPage; i++) {
+                $("#page_" + i).show();
+            }
+            for (var i = (pageNumber * pageSize) + 1; i <= size; i++) {
+                $("#page_" + i).hide();
+            }
+        }
+    }
+    function pagination_success(pageNumber, size) {
+        //$(".page_current").html("Trang hiện tại: " + pageNumber);
+        if (pageNumber == 1) {
+            for (var i = 1; i <= pageSize; i++) {
+                $("#page1_" + i).show();
+            }
+            for (var i = pageSize + 1; i <= Math.ceil(size); i++) {
+                $("#page1_" + i).hide();
+            }
+        } else {
+            var fromPage = (pageNumber * pageSize) - (pageSize - 1);
+            var toPage = pageNumber * pageSize;
+            for (var i = 1; i < (pageNumber * pageSize) - (pageSize - 1); i++) {
+                $("#page1_" + i).hide();
+            }
+            for (var i = (pageNumber * pageSize) - (pageSize - 1); i <= toPage; i++) {
+                $("#page1_" + i).show();
+            }
+            for (var i = (pageNumber * pageSize) + 1; i <= size; i++) {
+                $("#page1_" + i).hide();
+            }
+        }
+    }
+    // #endregion
+</script>

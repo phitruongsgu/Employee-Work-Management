@@ -1,0 +1,71 @@
+﻿@model LoginModel
+
+@{
+    ViewData["Title"] = "Đăng nhập tài khoản";
+    Layout = "~/Views/Shared/_LayoutLogin.cshtml";
+}
+
+<style>
+    body {
+        background-image: linear-gradient(to left, #ffcc33, #feda4e, #fde768, #fef380, #ffff99);
+        font-family: 'Fira Sans Extra Condensed', sans-serif;
+        color:black;
+    }
+
+
+    .text-center input,
+    .input {
+        border-radius: 10px;
+    }
+</style>
+
+<div class="container p-5" style="width:400px">
+    <h2 class="text-center" style="font-family: 'Fira Sans Extra Condensed', sans-serif;">Đăng nhập tài khoản</h2>
+    <form asp-action="Index" asp-controller="Login" method="post" enctype="multipart/form-data">
+        <div class="form-group row">
+            <label for="username" class="col-sm-4 col-form-label font-weight-bold">@Html.DisplayNameFor(m => m.username)</label>
+            <div class="col-sm-8">
+                <input class="form-control input" id="username" placeholder="Username" type="text" asp-for="username" />
+                <span asp-validation-for="username" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="password" class="col-sm-4 col-form-label font-weight-bold">@Html.DisplayNameFor(m => m.password)</label>
+            <div class="col-sm-8">
+                <input type="password" class="form-control input" id="password" placeholder="Password" asp-for="password">
+                <span asp-validation-for="password" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="text-center mt-2">
+            <input type="submit" id="submit" value="Đăng nhập" class="btn btn-primary mb-2" />
+            @*&nbsp;
+                <input type="reset" id="reset" value="Cancel" class="btn btn-primary mb-2" />*@
+        </div>
+    </form>
+</div>
+
+@*<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>*@
+<script>
+    //$("#submit").click(() => {
+    //    var user = $("#username").val();
+    //    var pass = $("#password").val();
+
+    //    $.ajax({
+    //        url: "/Login/xulydangnhap",
+    //        type: "post",
+    //        dataType: "json",
+    //        contentType: "application/json; charset=utf-8",
+    //        data: JSON.stringify({
+    //            "username": user,
+    //            "password": pass
+    //        }),
+    //        cache: false,
+    //        success: function (data) {
+    //            alert(data);
+    //        },
+    //        error: function () {
+    //            alert("failt");
+    //        }
+    //    });
+    //});
+</script>

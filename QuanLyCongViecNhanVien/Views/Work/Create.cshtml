@@ -1,0 +1,98 @@
+﻿@model WorkModel
+@{
+    ViewData["Title"] = "Thêm công việc";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@{
+    #region convert date theo máy Phi Trường
+    String date = DateTime.Now.ToString().Split(" ")[0];
+    var day = date.Split("/")[0];
+    var month = date.Split("/")[1];
+    var year = date.Split("/")[2];
+    var convert = "";
+    if (int.Parse(day) < 10 && int.Parse(month) < 10)
+    {
+        convert = year + "-" + month + "-" + day;
+    }
+    else
+    {
+        if (int.Parse(day) < 10)
+        {
+            convert = year + "-" + month + "-" + day;
+        }
+        else
+        {
+            if (int.Parse(month) < 10)
+            {
+                convert = year + "-" + month + "-" + day;
+            }
+        }
+    }
+    #endregion
+
+    //#region convert date theo máy a Vinh
+    //String date = DateTime.Now.ToString().Split(" ")[0];
+    //var month = date.Split("/")[0];
+    //var day = date.Split("/")[1];
+    //var year = date.Split("/")[2];
+    //var convert = "";
+    //if (int.Parse(day) < 10 && int.Parse(month) < 10)
+    //{
+    //    convert = year + "-0" + month + "-0" + day;
+    //}
+    //else
+    //{
+    //    if (int.Parse(day) < 10)
+    //    {
+    //        convert = year + "-" + month + "-0" + day;
+    //    }
+    //    else
+    //    {
+    //        if (int.Parse(month) < 10)
+    //        {
+    //            convert = year + "-0" + month + "-" + day;
+    //        }
+    //    }
+    //}
+    //#endregion
+}
+<div class="container dashboard-content">
+    <h1 style="text-align:center"> <i class="fa fa-pencil-alt"></i>&nbsp;Thêm công việc</h1>
+    <form href="/Work/Create" method="POST" style="width:600px;margin:0 auto;">
+        <div hidden>
+            <label>ID công việc</label>
+            <input name="IDProduct" value="0" type="text" />
+        </div>
+        <div class="form-group">
+            <label class="font-weight-bold" asp-for="Title"></label>
+            <input asp-for="Title" class="form-control" />
+            <span asp-validation-for="Title" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label class="font-weight-bold" asp-for="StartDate"></label>
+            <input type="date" asp-for="StartDate" class="form-control" value="@convert" />
+            @Html.ValidationMessageFor(model => model.StartDate, null, new { @class = "text-danger" })
+        </div>
+        <div class="form-group">
+            <label class="font-weight-bold" asp-for="EndDate"></label>
+            <input type="date" asp-for="EndDate" class="form-control" value="@convert"  />
+            @Html.ValidationMessageFor(model => model.EndDate, null, new { @class = "text-danger" })
+        </div>
+
+        <div class="form-group">
+            <label class="font-weight-bold" asp-for="Range"></label>
+            <select class="form-control" asp-for="Range">
+                <option value="Public">Public</option>
+                <option value="Private">Private</option>
+            </select>
+        </div>
+        <div class="text-right">
+            <input class="btn btn-primary mb-2" type="submit" value="Tiếp tục" />
+        </div>
+        <div class="text-right">
+            <a href="/Work/Index" class="btn btn-primary">Về danh sách công việc</a>
+        </div>
+    </form>
+
+</div>

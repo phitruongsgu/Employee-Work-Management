@@ -1,0 +1,35 @@
+﻿@model ModelView
+
+<div class="table-responsive mt-3" id="partialAnnounce" style="display:none;">
+    <table class="table table-sm table-borderless mb-0">
+        <tbody id="bodyCmt">
+            @{
+                foreach (var i in Model.Announces)
+                {
+                    <tr>
+                        <th scope="row" style="font-size:17px;color:orangered"><strong>Ban lãnh đạo</strong></th>
+                        <td>
+                            @i.Content
+                            @if (TempData.Peek("role").ToString() == "Admin")
+                            {
+                                <a onclick="removeANN(@i.Announce_ID)"
+                                   style="cursor:pointer;margin-left:15px;color:red;font-size:13px;text-decoration:underline;">Xóa</a>
+                            }
+                        </td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+    <div>
+        @{
+            if (TempData.Peek("role").ToString() == "Admin")
+            {
+                <input value="@Model.work.Work_ID" id="workID" hidden />
+                <img class="rounded-circle" src="/comment.png" width="34" height="34">
+                <input type="text" id="ann" style="width:250px;height:38px;border-radius:50px; outline:none;padding-left:12px;border:0.5px solid silver" />
+                <i onclick="return sendAnn()" class="fa fa-arrow-circle-up" style="cursor:pointer;font-size:23px;margin-left:5px;color:blue;"></i>
+            }
+        }
+    </div>
+</div>

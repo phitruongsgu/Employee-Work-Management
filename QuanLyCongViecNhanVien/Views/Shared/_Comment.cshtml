@@ -1,0 +1,45 @@
+﻿@model ModelView
+@*<h2 class="text-center">Bình luận <i class="fa fa-comments"></i> </h2>*@
+<div class="table-responsive mt-3" id="partialComment">
+    <table class="table table-sm table-borderless mb-0">
+        <tbody id="bodyCmt">
+            @{
+                foreach (var i in Model.Comments)
+                {
+                    <tr>
+                        @foreach (var j in Model.Staffs)
+                        {
+                            if (i.Account_ID == j.Account_ID)
+                            {
+                                int role = Model.Accounts.Where(p => p.Account_ID == i.Account_ID).FirstOrDefault().Role_ID;
+
+                                if (role == 1)
+                                {
+                                    <th scope="row"><strong style="color:red">Ban lãnh đạo</strong></th>
+                                }
+                                else
+                                {
+                                    <th scope="row"><strong>@j.Staff_Name</strong></th>
+                                }
+                                <td>
+                                    @i.Content
+                                    @if (j.Account_ID == Model.Account_ID)
+                                    {
+                                        <a onclick="removeCMT(@i.Comment_ID)"
+                                           style="cursor:pointer;margin-left:15px;color:red;font-size:13px;text-decoration:underline;">Xóa</a>
+                                    }
+                                </td>
+                            }
+                        }
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+    <div>
+        <input value="@Model.work.Work_ID" id="workID" hidden />
+        <img class="rounded-circle" src="/comment.png" width="34" height="34">
+        <input type="text" id="cmt" style="width:250px;height:38px;border-radius:50px; outline:none;padding-left:12px;border:0.5px solid silver" />
+        <i onclick="return sendCmt()" class="fa fa-arrow-circle-up" style="cursor:pointer;font-size:23px;margin-left:5px;color:blue"></i>
+    </div>
+</div>

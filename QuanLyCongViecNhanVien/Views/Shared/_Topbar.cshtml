@@ -1,0 +1,41 @@
+﻿<nav class="navbar navbar-expand-lg bg-white fixed-top">
+        <a class="navbar-brand center-x" asp-action="Index" asp-controller="Home">HỆ THỐNG QUẢN LÝ CÔNG VIỆC</a>
+        <div class="collapse navbar-collapse " id="navbarSupportedContent">
+            @*<ul class="navbar-nav ml-auto navbar-right-top">*@
+                @*<li class="nav-item dropdown notification">
+                    @{
+                        String gender = TempData.Peek("gender").ToString();
+                        String role = TempData.Peek("role").ToString();
+                        if (role == "Admin")
+                        {
+                            if (gender == "Male")
+                            {
+                                <h4 class="nav-link" style="color:black;padding-bottom:2px">Xin chào anh: <b> @TempData.Peek("staffName") (Admin)</b></h4>
+                            }
+                            else
+                            {
+                                <h4 class="nav-link" style="color:black;padding-bottom:2px">Xin chào chị: @TempData.Peek("staffName") (Admin)</h4>
+                            }
+                        }
+                        else
+                        {
+                            if (gender == "Male")
+                            {
+                                <h4 class="nav-link" style="color:black;padding-bottom:2px">Chào anh: @TempData.Peek("staffName") (Staff)</h4>
+                            }
+                            else
+                            {
+                                <h4 class="nav-link" style="color:black;padding-bottom:2px">Chào chị: @TempData.Peek("staffName") (Staff)</h4>
+                            }
+                        }
+                    }
+                </li>*@
+                @*<li class="nav-item dropdown connection">
+                    <a class="nav-link nav-icons" href="#" id="navbarDropdownMenuLink1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-fw fa-bell"></i> <span class="indicator"></span></a>
+                </li>*@
+                @*<li class="nav-item">
+                    <a class="nav-link nav-icons text-dark" asp-controller="Login" asp-action="Logout">Đăng xuất</a>
+                </li>*@
+            @*</ul>*@
+        </div>
+</nav>
